@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "LeetHub Sync",
+  "description": "Automatically syncs your Accepted LeetCode solutions to a GitHub repository.",
+  "version": "0.1.0",
+  "icons": {
+    "16": "public/icons/icon16.png",
+    "48": "public/icons/icon48.png",
+    "128": "public/icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "src/popup/index.html"
+  },
+  "options_page": "src/options/index.html",
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/content-script.ts-BoEjFQHw.js"
+      ],
+      "matches": [
+        "https://leetcode.com/*"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [
+    "storage",
+    "webRequest",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://leetcode.com/*",
+    "https://api.github.com/*",
+    "https://github.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://leetcode.com/*"
+      ],
+      "resources": [
+        "assets/content-script.ts-BoEjFQHw.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}
